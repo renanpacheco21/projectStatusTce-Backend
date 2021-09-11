@@ -1,10 +1,6 @@
 package com.betha.statustce.statustce.resource;
 
-
-import com.betha.statustce.statustce.model.Estado;
 import com.betha.statustce.statustce.model.Municipio;
-import com.betha.statustce.statustce.model.Pais;
-import com.betha.statustce.statustce.repository.EstadoRepository;
 import com.betha.statustce.statustce.repository.MunicipioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +29,16 @@ public class MunicipioController {
     @PostMapping
     public Municipio create(@RequestBody Municipio municipio){
         return repository.save(municipio);
+    }
+
+    @PutMapping("/{id}")
+    public Municipio update(@PathVariable(value = "id") Long municipioId, @RequestBody Municipio pais) throws EntityNotFoundException{
+        Municipio municipioFind = repository.findById(municipioId).orElseThrow(() -> new EntityNotFoundException("Município não encontrado com Id:: "+ municipioId));
+        municipioFind.setId(pais.getId());
+        municipioFind.setNome(pais.getNome());
+        municipioFind.setPopulacao(pais.getPopulacao());
+
+        return repository.save(municipioFind);
     }
 
 
