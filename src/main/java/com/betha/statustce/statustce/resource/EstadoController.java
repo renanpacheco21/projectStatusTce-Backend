@@ -40,4 +40,5 @@ public class EstadoController {
         repository.delete(estadoFind);
         return ResponseEntity.noContent().build();
     }
+
 }
