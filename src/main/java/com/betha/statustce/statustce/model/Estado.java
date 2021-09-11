@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Table(schema = "statustce",name = "estado")
 public class Estado extends AbstractRegion {
     @ManyToOne
-    @JoinColumn(name="i_paises", referencedColumnName = "id")
+    @JoinColumn(name="i_pais", referencedColumnName = "id")
     private Pais pais;
 
     public Pais getPais() {
