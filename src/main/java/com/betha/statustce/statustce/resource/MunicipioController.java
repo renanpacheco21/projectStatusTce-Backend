@@ -1,10 +1,6 @@
 package com.betha.statustce.statustce.resource;
 
-
-import com.betha.statustce.statustce.model.Estado;
 import com.betha.statustce.statustce.model.Municipio;
-import com.betha.statustce.statustce.model.Pais;
-import com.betha.statustce.statustce.repository.EstadoRepository;
 import com.betha.statustce.statustce.repository.MunicipioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
