@@ -1,7 +1,6 @@
 package com.betha.statustce.statustce.model;
 
 import com.betha.statustce.statustce.enterprise.AbstractRegion;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
