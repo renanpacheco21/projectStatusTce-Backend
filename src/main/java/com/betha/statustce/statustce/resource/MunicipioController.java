@@ -35,6 +35,16 @@ public class MunicipioController {
         return repository.save(municipio);
     }
 
+    @PutMapping("/{id}")
+    public Municipio update(@PathVariable(value = "id") Long municipioId, @RequestBody Municipio pais) throws EntityNotFoundException{
+        Municipio municipioFind = repository.findById(municipioId).orElseThrow(() -> new EntityNotFoundException("Município não encontrado com Id:: "+ municipioId));
+        municipioFind.setId(pais.getId());
+        municipioFind.setNome(pais.getNome());
+        municipioFind.setPopulacao(pais.getPopulacao());
+
+        return repository.save(municipioFind);
+    }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable(value = "id") Long municipioId) throws EntityNotFoundException{
