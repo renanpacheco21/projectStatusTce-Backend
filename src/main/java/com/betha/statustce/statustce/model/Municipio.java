@@ -10,16 +10,19 @@ import javax.persistence.Table;
 @Entity
 @Table(schema = "statustce",name = "municipio")
 public class Municipio extends AbstractRegion {
-
     @ManyToOne
     @JoinColumn(name="i_estado", referencedColumnName = "id")
-    private Municipio municipio;
+    private Estado estado;
 
-    public Municipio getMunicipio() {
-        return municipio;
+    public Estado getEstado() {
+        return estado;
     }
 
-    public void setMunicipio(Estado estado) {
-        this.municipio = municipio;
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
+    public Municipio(){
+
     }
 }
