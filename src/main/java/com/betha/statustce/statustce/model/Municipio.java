@@ -19,7 +19,7 @@ public class Municipio extends AbstractRegion {
         return municipio;
     }
 
-    public void setMunicipio(Pais pais) {
+    public void setMunicipio(Estado estado) {
         this.municipio = municipio;
     }
 }
