@@ -4,9 +4,11 @@ import com.betha.statustce.statustce.model.Pais;
 import com.betha.statustce.statustce.repository.PaisRepository;
 import jdk.nashorn.internal.runtime.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
+import javax.xml.ws.Response;
 import java.util.List;
 
 @RestController
@@ -40,5 +42,12 @@ public class PaisController {
      paisFind.setPopulacao(pais.getPopulacao());
 
      return repository.save(paisFind);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete(@PathVariable(value = "id") Long paisId) throws EntityNotFoundException{
+        Pais paisFind = repository.findById(paisId).orElseThrow(() -> new EntityNotFoundException("País não encontrado com o ID::"+paisId));
+        repository.delete(paisFind);
+        return ResponseEntity.noContent().build();
     }
 }
