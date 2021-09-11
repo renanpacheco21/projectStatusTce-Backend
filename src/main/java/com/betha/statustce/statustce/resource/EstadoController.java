@@ -33,6 +33,15 @@ public class EstadoController {
         return repository.save(estado);
     }
 
+    @PutMapping("/{id}")
+    public Estado update(@PathVariable(value = "id") Long estadoID, @RequestBody Estado estado) throws EntityNotFoundException{
+        Estado estadoFind = repository.findById(estadoID).orElseThrow(() -> new EntityNotFoundException("Estado não encontrado com Id:: "+estadoID));
+        estadoFind.setId(estado.getId());
+        estadoFind.setNome(estado.getNome());
+        estadoFind.setPopulacao(estado.getPopulacao());
+
+        return repository.save(estadoFind);
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable(value = "id") Long estadoID) throws EntityNotFoundException{
