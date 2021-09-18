@@ -19,7 +19,7 @@ public class EstadoController {
 
     @GetMapping
     public List<Estado> getEstado(){
-        return repository.findAll();
+        return repository.findAll().stream().map();
     }
 
     @GetMapping("/{id}")
