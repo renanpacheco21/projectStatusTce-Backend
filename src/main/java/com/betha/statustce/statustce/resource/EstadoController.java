@@ -2,7 +2,6 @@ package com.betha.statustce.statustce.resource;
 
 
 import com.betha.statustce.statustce.model.Estado;
-import com.betha.statustce.statustce.model.Pais;
 import com.betha.statustce.statustce.repository.EstadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/estados")
@@ -18,8 +18,8 @@ public class EstadoController {
     private EstadoRepository repository;
 
     @GetMapping
-    public List<Estado> getEstado(){
-        return repository.findAll().stream().map();
+    public List<EstadoDTO> getEstado(){
+        return repository.findAll().stream().map(e-> EstadoDTO.toDTO(e)).collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")
