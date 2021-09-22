@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.util.Date;
 
-@Entity
+
 @Table(schema = "statustce",name = "competencia")
 public class Competencia {
 
@@ -54,5 +54,9 @@ public class Competencia {
 
     public void setDataStatus(Date dataStatus) {
         this.dataStatus = dataStatus;
+    }
+
+    public Competencia(){
+
     }
 }
