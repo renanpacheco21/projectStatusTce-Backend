@@ -18,6 +18,7 @@ public class EntidadeTCE {
         this.municipio = municipio;
     }
 
+    @ManyToOne
     @JoinColumn(name="i_responsavel", referencedColumnName = "id")
     private Responsavel responsavel;
 
