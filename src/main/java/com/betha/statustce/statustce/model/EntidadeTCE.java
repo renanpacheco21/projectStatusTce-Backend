@@ -18,6 +18,17 @@ public class EntidadeTCE {
         this.municipio = municipio;
     }
 
+    @JoinColumn(name="i_responsavel", referencedColumnName = "id")
+    private Responsavel responsavel;
+
+    public Responsavel getResponsavel() {
+        return responsavel;
+    }
+
+    public void setResponsavel(Responsavel responsavel) {
+        this.responsavel = responsavel;
+    }
+
     @Id
     @Column(name="id")
     private Integer id;
