@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,7 +30,7 @@ public class EstadoController {
     }
 
     @PostMapping
-    public Estado create(@RequestBody Estado estado){
+    public Estado create(@Valid @RequestBody Estado estado){
         return repository.save(estado);
     }
 

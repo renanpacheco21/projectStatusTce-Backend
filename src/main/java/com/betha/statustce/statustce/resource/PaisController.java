@@ -4,12 +4,17 @@ import com.betha.statustce.statustce.model.Pais;
 import com.betha.statustce.statustce.repository.PaisRepository;
 import jdk.nashorn.internal.runtime.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
-
 import javax.persistence.EntityNotFoundException;
+import javax.validation.Valid;
 import javax.xml.ws.Response;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -31,7 +36,7 @@ public class PaisController {
     }
 
     @PostMapping
-    public PaisDTO create(@RequestBody Pais pais){
+    public PaisDTO create(@Valid @RequestBody Pais pais){
         return PaisDTO.toDTO(repository.save(pais));
     }
 
@@ -50,5 +55,18 @@ public class PaisController {
         Pais paisFind = repository.findById(paisId).orElseThrow(() -> new EntityNotFoundException("País não encontrado com o ID::"+paisId));
         repository.delete(paisFind);
         return ResponseEntity.noContent().build();
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Map<String, String> handleValidationExceptions(
+            MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach((error) -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+        });
+        return errors;
     }
 }

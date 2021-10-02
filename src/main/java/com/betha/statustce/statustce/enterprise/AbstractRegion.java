@@ -2,9 +2,13 @@ package com.betha.statustce.statustce.enterprise;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @MappedSuperclass
 public class AbstractRegion extends AbstractEntity {
+    @NotNull(message = "O nome não pode ser nulo!")
+    @Size(max = 30, min = 3)
     @Column(name="nome")
     private String nome;
     @Column(name="populacao")

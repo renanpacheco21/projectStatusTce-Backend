@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -27,7 +28,7 @@ public class MunicipioController {
     }
 
     @PostMapping
-    public Municipio create(@RequestBody Municipio municipio){
+    public Municipio create(@Valid @RequestBody Municipio municipio){
         return repository.save(municipio);
     }
 
