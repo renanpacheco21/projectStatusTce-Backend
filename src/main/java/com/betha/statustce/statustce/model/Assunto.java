@@ -1,13 +1,22 @@
 package com.betha.statustce.statustce.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Table(schema = "statustce",name = "assunto")
 @Entity
 public class Assunto {
+
+    @ManyToOne
+    @JoinColumn(name="i_grupo_assunto", referencedColumnName = "id")
+    private GrupoAssunto grupoAssunto;
+
+    public GrupoAssunto getGrupoAssunto() {
+        return grupoAssunto;
+    }
+
+    public void setGrupoAssunto(GrupoAssunto grupoAssunto) {
+        this.grupoAssunto = grupoAssunto;
+    }
 
     @Id
     @Column(name="id")

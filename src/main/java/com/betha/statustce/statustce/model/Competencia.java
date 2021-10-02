@@ -1,13 +1,23 @@
 package com.betha.statustce.statustce.model;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Table(schema = "statustce",name = "competencia")
 @Entity
 public class Competencia {
+
+    @ManyToOne
+    @JoinColumn(name = "i_status", referencedColumnName = "id")
+
+    private Status status;
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 
     @Id
     @Column(name="id")
@@ -18,6 +28,7 @@ public class Competencia {
     private Integer ano;
     @Column(name="dataStatus")
     private Date dataStatus;
+
 
     public Competencia(Integer id, String competencia, Integer ano, Date dataStatus) {
         this.id = id;

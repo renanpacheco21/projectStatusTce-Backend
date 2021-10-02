@@ -1,13 +1,22 @@
 package com.betha.statustce.statustce.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Table(schema = "statustce",name = "entidade_tce")
 @Entity
 public class EntidadeTCE {
+
+    @ManyToOne
+    @JoinColumn(name="i_municipio", referencedColumnName = "id")
+    private Municipio municipio;
+
+    public Municipio getMunicipio() {
+        return municipio;
+    }
+
+    public void setMunicipio(Municipio municipio) {
+        this.municipio = municipio;
+    }
 
     @Id
     @Column(name="id")
