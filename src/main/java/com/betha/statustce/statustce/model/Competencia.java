@@ -1,13 +1,15 @@
 package com.betha.statustce.statustce.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
-
 @Table(schema = "statustce",name = "competencia")
+@Entity
 public class Competencia {
 
+    @Id
     @Column(name="id")
     private Integer id;
     @Column(name="competencia")
