@@ -1,8 +1,11 @@
 package com.betha.statustce.statustce.repository;
 
-import com.betha.statustce.statustce.model.Competencia;
-import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface StatusRepository extends JpaRepository<Competencia, Long> {
+import com.betha.statustce.statustce.model.Competencia;
+import com.betha.statustce.statustce.model.Status;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
+
+public interface StatusRepository extends JpaRepository<Competencia, Long> , QuerydslPredicateExecutor<Status> {
 
 }
