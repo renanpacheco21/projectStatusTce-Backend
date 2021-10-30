@@ -43,16 +43,17 @@ public class PaisController {
     }
 
     @PostMapping
-
+    public PaisDTO create(@Valid @RequestBody Pais pais){
+        return PaisDTO.toDTO(repository.save(pais));
+    }
 
     @PutMapping("/{id}")
-    public Pais update(@PathVariable(value = "id") Long paisId, @RequestBody Pais pais) throws EntityNotFoundException{
+    public PaisDTO update(@PathVariable(value = "id") Long paisId,
+                          @RequestBody Pais pais) throws EntityNotFoundException{
      Pais paisFind = repository.findById(paisId).orElseThrow(() -> new EntityNotFoundException("Pais não encontrado com Id:: "+paisId));
      paisFind.setId(pais.getId());
-     paisFind.setNome(pais.getNome());
-     paisFind.setPopulacao(pais.getPopulacao());
 
-     return repository.save(paisFind);
+     return PaisDTO.toDTO(repository.save(paisFind));
     }
 
     @DeleteMapping("/{id}")
