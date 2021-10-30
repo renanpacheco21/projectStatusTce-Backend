@@ -1,5 +1,4 @@
 package com.betha.statustce.statustce.resource;
-
 import com.betha.statustce.statustce.model.Estado;
 
 public class EstadoDTO {

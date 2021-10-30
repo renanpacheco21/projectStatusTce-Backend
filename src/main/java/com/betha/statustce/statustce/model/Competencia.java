@@ -21,7 +21,7 @@ public class Competencia {
 
     @Id
     @Column(name="id")
-    private Integer id;
+    private Long id;
     @Column(name="competencia")
     private String competencia;
     @Column(name="ano")
@@ -30,18 +30,18 @@ public class Competencia {
     private Date dataStatus;
 
 
-    public Competencia(Integer id, String competencia, Integer ano, Date dataStatus) {
+    public Competencia(Long id, String competencia, Integer ano, Date dataStatus) {
         this.id = id;
         this.competencia = competencia;
         this.ano = ano;
         this.dataStatus = dataStatus;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

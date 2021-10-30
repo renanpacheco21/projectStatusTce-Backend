@@ -31,6 +31,7 @@ public class MunicipioController {
         all.forEach(f -> result.add(MunicipioDTO.toDTO(f)));
         return result;
     }
+
     @GetMapping("/{id}")
     public MunicipioDTO getMunicipioId(@PathVariable(value = "id") Long municipioId) throws EntityNotFoundException{
         Municipio municipioFind = repository.findById(municipioId).orElseThrow(() -> new EntityNotFoundException("Município não encontado com o ID"+ municipioId));
@@ -44,9 +45,9 @@ public class MunicipioController {
 
     @PutMapping("/{id}")
     public MunicipioDTO update(@PathVariable(value = "id") Long municipioId,
-                               @RequestBody Municipio pais) throws EntityNotFoundException{
-        Municipio municipioFind = repository.findById(municipioId).orElseThrow(() -> new EntityNotFoundException("Pais não encontrado com Id:: "+municipioId));
-        municipioFind.setId(pais.getId());
+                               @RequestBody Municipio municipio) throws EntityNotFoundException{
+        Municipio municipioFind = repository.findById(municipioId).orElseThrow(() -> new EntityNotFoundException("Municipio não encontrado com Id:: "+municipioId));
+        municipioFind.setId(municipio.getId());
 
         return MunicipioDTO.toDTO(repository.save(municipioFind));
     }
