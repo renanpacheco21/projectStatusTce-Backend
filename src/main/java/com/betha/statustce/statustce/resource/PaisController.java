@@ -1,9 +1,12 @@
 package com.betha.statustce.statustce.resource;
 
+import com.betha.statustce.statustce.model.Estado;
 import com.betha.statustce.statustce.model.Pais;
 import com.betha.statustce.statustce.repository.PaisRepository;
+import com.querydsl.core.types.Predicate;
 import jdk.nashorn.internal.runtime.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.querydsl.binding.QuerydslPredicate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 import javax.xml.ws.Response;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,8 +29,11 @@ public class PaisController {
     private PaisRepository repository;
 
     @GetMapping
-    public List<PaisDTO> getPaises(){
-        return repository.findAll().stream().map(p-> PaisDTO.toDTO(p)).collect(Collectors.toList());
+    public List<PaisDTO> getPais(@QuerydslPredicate(root = Pais.class) Predicate predicate){
+        List<PaisDTO> result = new ArrayList<>();
+        Iterable<Pais> all = repository.findAll(predicate);
+        all.forEach(f -> result.add(PaisDTO.toDTO(f)));
+        return result;
     }
 
     @GetMapping("/{id}")
@@ -36,9 +43,7 @@ public class PaisController {
     }
 
     @PostMapping
-    public PaisDTO create(@Valid @RequestBody Pais pais){
-        return PaisDTO.toDTO(repository.save(pais));
-    }
+
 
     @PutMapping("/{id}")
     public Pais update(@PathVariable(value = "id") Long paisId, @RequestBody Pais pais) throws EntityNotFoundException{

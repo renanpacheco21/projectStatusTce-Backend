@@ -1,7 +1,7 @@
 package com.betha.statustce.statustce.resource;
 
-
 import com.betha.statustce.statustce.model.Estado;
+import com.betha.statustce.statustce.model.Pais;
 import com.betha.statustce.statustce.repository.EstadoRepository;
 import com.querydsl.core.types.Predicate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,24 +35,23 @@ public class EstadoController {
     }
 
     @GetMapping("/{id}")
-    public Estado getEstadosId(@PathVariable(value = "id") Long estadoId) throws EntityNotFoundException {
+    public EstadoDTO getEstadosId(@PathVariable(value = "id") Long estadoId) throws EntityNotFoundException {
         Estado estadoFind = repository.findById(estadoId).orElseThrow(() -> new EntityNotFoundException("Estado não encontado com o ID"+ estadoId));
-        return estadoFind;
+        return EstadoDTO.toDTO(estadoFind);
     }
 
     @PostMapping
-    public Estado create(@Valid @RequestBody Estado estado){
-        return repository.save(estado);
+    public EstadoDTO create(@Valid @RequestBody Estado estado){
+        return EstadoDTO.toDTO(repository.save(estado));
     }
 
     @PutMapping("/{id}")
-    public Estado update(@PathVariable(value = "id") Long estadoID, @RequestBody Estado estado) throws EntityNotFoundException{
-        Estado estadoFind = repository.findById(estadoID).orElseThrow(() -> new EntityNotFoundException("Estado não encontrado com Id:: "+estadoID));
+    public EstadoDTO update(@PathVariable(value = "id") Long estadoId,
+                             @RequestBody Estado estado) throws EntityNotFoundException {
+        Estado estadoFind = repository.findById(estadoId).orElseThrow(() -> new EntityNotFoundException("Estado não encontrado com ID :: " + estadoId));
         estadoFind.setId(estado.getId());
-        estadoFind.setNome(estado.getNome());
-        estadoFind.setPopulacao(estado.getPopulacao());
 
-        return repository.save(estadoFind);
+        return EstadoDTO.toDTO(repository.save(estadoFind));
     }
 
     @DeleteMapping("/{id}")
@@ -61,6 +60,7 @@ public class EstadoController {
         repository.delete(estadoFind);
         return ResponseEntity.noContent().build();
     }
+
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleValidationExceptions(
