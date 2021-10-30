@@ -8,7 +8,7 @@ import javax.validation.constraints.Size;
 @MappedSuperclass
 public class AbstractRegion extends AbstractEntity {
     @NotNull(message = "O nome não pode ser nulo!")
-    @Size(max = 30, min = 3)
+    @Size(max = 30, min = 1)
     @Column(name="nome")
     private String nome;
     @Column(name="populacao")
