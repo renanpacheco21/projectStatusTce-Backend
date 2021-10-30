@@ -8,6 +8,6 @@ import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ResponsavelRepository extends JpaRepository<Competencia, Long> , QuerydslPredicateExecutor<Responsavel> {
+public interface ResponsavelRepository extends JpaRepository<Competencia, Long> , QuerydslPredicateExecutor<Competencia> {
 
 }
