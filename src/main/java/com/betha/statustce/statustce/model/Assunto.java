@@ -20,11 +20,11 @@ public class Assunto {
 
     @Id
     @Column(name="id")
-    private Integer id;
+    private Long id;
     @Column(name="descricao")
     private String descricao;
 
-    public Assunto(Integer id, String descricao) {
+    public Assunto(Long id, String descricao) {
         this.id = id;
         this.descricao = descricao;
     }
@@ -33,7 +33,7 @@ public class Assunto {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

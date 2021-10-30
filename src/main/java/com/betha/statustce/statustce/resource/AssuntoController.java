@@ -33,7 +33,7 @@ public class AssuntoController {
     }
 
     @GetMapping("/{id}")
-    public AssuntoDTO getMunicipioId(@PathVariable(value = "id") Long assuntoId) throws EntityNotFoundException {
+    public AssuntoDTO getAssuntoId(@PathVariable(value = "id") Long assuntoId) throws EntityNotFoundException {
         Assunto assuntoFind = repository.findById(assuntoId).orElseThrow(() -> new EntityNotFoundException("Assunto não encontado com o ID"+ assuntoId));
         return AssuntoDTO.toDTO(assuntoFind);
     }
@@ -45,7 +45,7 @@ public class AssuntoController {
 
     @PutMapping("/{id}")
     public AssuntoDTO update(@PathVariable(value = "id") Long assuntoId,
-                               @RequestBody Municipio assunto) throws EntityNotFoundException{
+                               @RequestBody Assunto assunto) throws EntityNotFoundException{
         Assunto assuntoFind = repository.findById(assuntoId).orElseThrow(() -> new EntityNotFoundException("Assunto não encontrado com Id:: "+assuntoId));
         assuntoFind.setId(assunto.getId());
 
