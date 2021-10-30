@@ -8,6 +8,6 @@ import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UnidadeAtendimentoRepository extends JpaRepository<Competencia, Long> , QuerydslPredicateExecutor<UnidadeAtendimento> {
+public interface UnidadeAtendimentoRepository extends JpaRepository<UnidadeAtendimento, Long> , QuerydslPredicateExecutor<UnidadeAtendimento> {
 
 }

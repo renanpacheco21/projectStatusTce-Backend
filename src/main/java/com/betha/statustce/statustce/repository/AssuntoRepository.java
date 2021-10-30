@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface AssuntoRepository extends JpaRepository<Competencia, Long> , QuerydslPredicateExecutor<Assunto> {
+public interface AssuntoRepository extends JpaRepository<Assunto, Long> , QuerydslPredicateExecutor<Assunto> {
 
 }
 

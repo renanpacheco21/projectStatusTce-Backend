@@ -8,6 +8,6 @@ import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface GrupoAssuntoRepository extends JpaRepository<Competencia, Long> , QuerydslPredicateExecutor<GrupoAssunto> {
+public interface GrupoAssuntoRepository extends JpaRepository<GrupoAssunto, Long> , QuerydslPredicateExecutor<GrupoAssunto> {
 
 }

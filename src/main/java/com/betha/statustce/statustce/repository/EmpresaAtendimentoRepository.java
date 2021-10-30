@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface EmpresaAtendimentoRepository extends JpaRepository<Competencia, Long> , QuerydslPredicateExecutor<EmpresaAtendimento> {
+public interface EmpresaAtendimentoRepository extends JpaRepository<EmpresaAtendimento, Long> , QuerydslPredicateExecutor<EmpresaAtendimento> {
 
 }
