@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/competencia")
+@RequestMapping("/api/competencia")
 public class CompetenciaController {
     @Autowired
     private CompetenciaRepository repository;
