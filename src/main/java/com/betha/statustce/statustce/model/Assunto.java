@@ -29,7 +29,7 @@ public class Assunto {
         this.descricao = descricao;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
