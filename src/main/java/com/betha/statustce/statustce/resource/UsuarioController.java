@@ -54,7 +54,7 @@ public class UsuarioController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable(value = "id") Long usuarioId) throws EntityNotFoundException{
-        Usuario usuarioFind = repository.findById(usuarioId).orElseThrow(() -> new EntityNotFoundException("Usuario não encontrado com o ID::"+ assuntoId));
+        Usuario usuarioFind = repository.findById(usuarioId).orElseThrow(() -> new EntityNotFoundException("Usuario não encontrado com o ID::"+ usuarioId));
         repository.delete(usuarioFind);
         return ResponseEntity.noContent().build();
     }
