@@ -11,20 +11,20 @@ public class EmpresaAtendimento {
 
     @Id
     @Column(name="id")
-    private Integer id;
+    private Long id;
     @Column(name="nome")
     private String nome;
 
-    public EmpresaAtendimento(Integer id, String nome) {
+    public EmpresaAtendimento(Long id, String nome) {
         this.id = id;
         this.nome = nome;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
