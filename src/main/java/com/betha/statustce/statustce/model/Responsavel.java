@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class Responsavel {
     @Id
     @Column(name="id")
-    private Integer id;
+    private Long id;
     @Column(name="nome")
     private String nome;
     @Column(name="usuarioTce")
@@ -18,11 +18,11 @@ public class Responsavel {
     @Column(name="senhaTce")
     private String senhaTce;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
