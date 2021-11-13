@@ -50,7 +50,8 @@ public class EstadoController {
                              @RequestBody Estado estado) throws EntityNotFoundException {
         Estado estadoFind = repository.findById(estadoId).orElseThrow(() -> new EntityNotFoundException("Estado não encontrado com ID :: " + estadoId));
         estadoFind.setId(estado.getId());
-
+        estadoFind.setNome(estado.getNome());
+        estadoFind.setPopulacao(estado.getPopulacao());
         return EstadoDTO.toDTO(repository.save(estadoFind));
     }
 

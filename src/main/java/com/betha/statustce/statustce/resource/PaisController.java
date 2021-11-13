@@ -52,6 +52,8 @@ public class PaisController {
                           @RequestBody Pais pais) throws EntityNotFoundException{
      Pais paisFind = repository.findById(paisId).orElseThrow(() -> new EntityNotFoundException("Pais não encontrado com Id:: "+paisId));
      paisFind.setId(pais.getId());
+     paisFind.setNome(pais.getNome());
+     paisFind.setPopulacao(pais.getPopulacao());
 
      return PaisDTO.toDTO(repository.save(paisFind));
     }

@@ -1,11 +1,26 @@
 package com.betha.statustce.statustce.resource;
 import com.betha.statustce.statustce.model.Estado;
+import com.betha.statustce.statustce.model.Pais;
 
 public class EstadoDTO {
 
     private Long id;
     private String nome;
-    private  String populacao;
+    private String populacao;
+    private Pais pais;
+
+    public Pais getPais() {
+        return pais;
+    }
+
+    public void setPais(Pais pais) {
+        this.pais = pais;
+    }
+
+
+    public EstadoDTO() {
+
+    }
 
     public Long getId() {
         return id;
@@ -36,6 +51,7 @@ public class EstadoDTO {
         dto.setId(estado.getId());
         dto.setNome(estado.getNome());
         dto.setPopulacao(estado.getPopulacao());
+        dto.setPais(estado.getPais());
         return dto;
     }
 
@@ -44,6 +60,7 @@ public class EstadoDTO {
         entity.setId(dto.getId());
         entity.setNome(dto.getNome());
         entity.setPopulacao(dto.getPopulacao());
+        entity.setPais(dto.getPais());
         return entity;
     }
 }
