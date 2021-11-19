@@ -48,7 +48,8 @@ public class MunicipioController {
                                @RequestBody Municipio municipio) throws EntityNotFoundException{
         Municipio municipioFind = repository.findById(municipioId).orElseThrow(() -> new EntityNotFoundException("Municipio não encontrado com Id:: "+municipioId));
         municipioFind.setId(municipio.getId());
-
+        municipioFind.setNome(municipio.getNome());
+        municipioFind.setPopulacao(municipio.getNome());
         return MunicipioDTO.toDTO(repository.save(municipioFind));
     }
 
