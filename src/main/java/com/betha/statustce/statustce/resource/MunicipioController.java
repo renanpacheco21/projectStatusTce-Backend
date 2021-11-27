@@ -50,6 +50,7 @@ public class MunicipioController {
         municipioFind.setId(municipio.getId());
         municipioFind.setNome(municipio.getNome());
         municipioFind.setPopulacao(municipio.getNome());
+        municipioFind.setEstado(municipio.getEstado());
         return MunicipioDTO.toDTO(repository.save(municipioFind));
     }
 
