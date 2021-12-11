@@ -48,7 +48,6 @@ public class AssuntoController {
                                @RequestBody Assunto assunto) throws EntityNotFoundException{
         Assunto assuntoFind = repository.findById(assuntoId).orElseThrow(() -> new EntityNotFoundException("Assunto não encontrado com Id:: "+assuntoId));
         assuntoFind.setId(assunto.getId());
-
         return AssuntoDTO.toDTO(repository.save(assuntoFind));
     }
 
