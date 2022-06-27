@@ -2,7 +2,7 @@ package com.betha.statustce.statustce.model;
 
 import javax.persistence.*;
 
-@Table(schema = "statustce",name = "assunto")
+@Table(schema = "ma = \"statustce\",naassunto")
 @Entity
 public class Assunto {
 
